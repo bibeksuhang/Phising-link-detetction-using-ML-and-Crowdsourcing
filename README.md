@@ -103,6 +103,9 @@ http://127.0.0.1:8000/
 * matplotlib
 
 ---
+Expected Results 
+<img width="739" height="586" alt="Screenshot 2025-07-25 125207" src="https://github.com/user-attachments/assets/971b2d79-065d-4380-85a7-583dbde65ca3" />
+
 
 ## 📜 License
 
