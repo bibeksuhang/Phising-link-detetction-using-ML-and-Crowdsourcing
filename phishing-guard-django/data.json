@@ -1,0 +1,18 @@
+[
+    {
+        "url": "http://fake-login-secure.com",
+        "label": "good"
+    },
+    {
+        "url": "https://www.google.com",
+        "label": "bad"
+    },
+    {
+        "url": "http://malicious-site.fake-login.com",
+        "label": "good"
+    },
+    {
+        "url": "https://www.google.com",
+        "label": "bad"
+    }
+]
