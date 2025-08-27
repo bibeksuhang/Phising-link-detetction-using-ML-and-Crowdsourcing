@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Phishing URL Detector</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+<body>
+    <div class="container">
+        <h2>🔍 Phishing URL Detector</h2>
+
+        <form id="predictForm" action="{% url 'predict' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="url" id="urlInput" placeholder="Enter a URL to check..." required />
+            <br />
+            <button type="submit">Check URL</button>
+        </form>
+
+        <div id="resultBox"></div>
+
+        <form
+            id="feedbackForm"
+            class="feedback-buttons"
+            style="display: none;"
+            action="{% url 'feedback' %}"
+            method="POST"
+        >
+            {% csrf_token %}
+            <input type="hidden" name="url" id="feedbackUrl" />
+            <p>Was this result accurate?</p>
+            <button type="submit" name="label" value="good">👍 Correct (Good)</button>
+            <button type="submit" name="label" value="bad">👎 Incorrect (Phishing)</button>
+        </form>
+
+        <div class="footer">Built with ❤️ to help you browse safely.</div>
+    </div>
+
+    <!-- Load external JavaScript -->
+    <script src="{% static 'scripts.js' %}"></script>
+
+    <script>
+        // On submit, strip protocol (http:// or https://) from URL input
+        document.getElementById("predictForm").addEventListener("submit", function (e) {
+            const input = document.getElementById("urlInput");
+            // Remove protocol if present
+            input.value = input.value.replace(/^https?:\/\//i, "");
+        });
+    </script>
+</body>
+</html>
